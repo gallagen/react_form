@@ -1,5 +1,7 @@
 import React from "react";
 import Greetings from "./Greetings";
+import FirstNameField from "./FirstNameField";
+import LastNameField from "./LastNameField";
 import style from "./style";
 
 class SimpleForm extends React.Component {
@@ -45,33 +47,17 @@ class SimpleForm extends React.Component {
 
     return (
       <div style={style.form}>
-        <div style={style.inputGroup}>
-          <label>
-            First name:
-            <input
-              style={style.input}
-              type="text"
-              name="firstName"
-              onChange={this.onFirstNameChange}
-              onBlur={this.onFirstNameBlur}
-            />
-            {firstNameError && <div style={style.error}>{firstNameError}</div>}
-          </label>
-        </div>
+        <FirstNameField
+          onChange={this.onFirstNameChange}
+          onBlur={this.onFirstNameBlur}
+          error={firstNameError}
+        />
 
-        <div style={style.inputGroup}>
-          <label>
-            Last name:
-            <input
-              style={style.input}
-              type="text"
-              name="lastName"
-              onChange={this.onLastNameChange}
-              onBlur={this.onLastNameBlur}
-            />
-            {lastNameError && <div style={style.error}>{lastNameError}</div>}
-          </label>
-        </div>
+        <LastNameField
+          onChange={this.onLastNameChange}
+          onBlur={this.onLastNameBlur}
+          error={lastNameError}
+        />
 
         <Greetings firstName={firstName} lastName={lastName} />
       </div>
@@ -80,4 +66,3 @@ class SimpleForm extends React.Component {
 }
 
 export default SimpleForm;
-
